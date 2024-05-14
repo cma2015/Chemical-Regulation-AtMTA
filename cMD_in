@@ -1,0 +1,28 @@
+# cMD
+ &cntrl
+ ! Simulation setting
+ nstlim = 50000000, dt = 0.002, ! Simulation time = 100000ps = 100ns.
+ imin = 0, ! No minimization. 
+ iwrap = 1, ! The coordinates written to the restart and trajectory files will be "wrapped" into a primary box. 
+ ig = -1, ! The random seed will be based on the current date and time, and hence will be different for every run.
+ 
+ ! Restart control
+ irest = 1,  ntx = 5, !
+ 
+ ! Print frequency control
+ ntpr =  100000, ntwr = 100000, ntwx = 500,
+ 
+ ! Ensemble control
+ ntp = 1, ! Md with isotropic position scaling.
+ ntb = 2, ! Constant pressure (default when ntp > 0)
+ ntf = 2, ! bond interactions involving H-atoms omitted (use with NTC=2) 
+ ntc = 2, ! bonds involving hydrogen are constrained. 
+ cut = 12.0, ! This is used to specify the nonbonded cutoff.
+
+ ! The restrained control
+ ntr = 0,
+
+ ! Temperature control. 
+ ntt = 3, gamma_ln = 2.0, temp0 = 300.0, 
+&end
+ 
