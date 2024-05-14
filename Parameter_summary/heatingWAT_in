@@ -1,0 +1,34 @@
+# Heating water
+ &cntrl
+ ! Simulation setting
+ nstlim = 200000, dt = 0.002, ! Simulation time = 400ps.
+ imin = 0, ! No minimization. 
+ nmropt = 1, ! NMR
+ iwrap = 1, ! The coordinates written to the restart and trajectory files will be "wrapped" into a primary box.
+ 
+ ! Restart control
+ ntx = 1, irest = 0, ! (default) Do not restart the simulation; instead, run as a new simulation.
+ 
+ ! Print frequency control
+ ntpr = 500, ntwr = 500, ntwx = 500, 
+
+ ! Ensemble control
+ ntp = 0, ! No pressure scaling .
+ tautp = 0.5, ! Generally, values for TAUTP should be in the range of 0.5-5.0 ps, with a smaller value providing tighter coupling to the heat bath and, thus, faster heating and a less natural trajectory. 
+ ntb = 1, ! constant volume (default when igb and ntp are both O, which are their defaults) periodicity is applied and PME.
+ ntf = 2, ! bond interactions involving H-atoms omitted (use with NTC=2).
+ ntc = 2, ! bonds involving hydrogen are constrained. 
+ cut = 12.0, ! This is used to specify the nonbonded cutoff, in Angstroms.
+ 
+ ! The restrained control
+ ntr = 1, restraintmask = "!:WAT", restraint_wt = 10.0, ibelly = 0, 
+ 
+ ! Temperature control. 
+ ntt = 3, gamma_ln = 2.0, temp0 = 300.0, tempi = 10.0,
+ /
+ &wt
+   TYPE='TEMP0', ISTEP1=1, ISTEP2=200000,
+   VALUE1=10.0, VALUE2=300.0,
+ /
+ &wt TYPE='END' /
+ 

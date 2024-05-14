@@ -1,0 +1,22 @@
+# Energy optimized system
+ &cntrl
+ ! Simulation setting
+ imin = 1, ntmin = 1, maxcyc = 5000, ncyc = 2500,
+
+ ! Restart control
+ irest = 0, ntx = 1, ! (default) read formatted with no initial velocity information. 
+ 
+ ! Print frequency control
+ ntpr = 100, ntwr = 100, 
+ 
+ ! Ensemble control
+ ntp = 0, ! No pressure scaling .
+ ntb = 1, ! constant volume (default when igb and ntp are both O, which are their defaults) periodicity is applied and PME.
+ ntf = 1, ! (default) complete interaction is calculated 
+ ntc = 1, ! (default) SHAKE is not performed. 
+ cut = 12.0, ! This is used to specify the nonbonded cutoff, in Angstroms.
+ 
+ ! The restrained control
+ ntr = 0,
+ &end
+ 
